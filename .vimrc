@@ -74,8 +74,9 @@ nnoremap k gk
 syntax on
 
 " 文字、カーソル設定
+set list
 " 不可視文字を可視化(タブが「▸-」と表示される)
-set list listchars=tab:▸\ 
+set listchars=tab:▸\ 
 "set listchars=tab:▸\ ,eol:↲,extends:❯,precedes:❮
 " Tab文字を半角スペースにする
 set expandtab
@@ -121,10 +122,20 @@ if &term =~ "xterm"
     cnoremap <special> <Esc>[200~ <nop>
     cnoremap <special> <Esc>[201~ <nop>
 endif
- 
+
+" Share OS clipboard
+set clipboard=unnamed
+
+" Disable auto formatting on long line(tw)
+set textwidth=0
+
+" Cursor position never top/end(so)
+set scrolloff=5
+
 " カラースキーマの適用
 colorscheme molokai
 
+" mapping config
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 nmap <C-K> <Plug>(caw:hatpos:toggle)
 vmap <C-K> <Plug>(caw:hatpos:toggle)
