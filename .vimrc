@@ -11,10 +11,7 @@ Plugin 'VundleVim/Vundle.vim'
 " 導入したいプラグインを以下に列挙
 " Plugin '[Github Author]/[Github repo]' の形式で記入
 Plugin 'airblade/vim-gitgutter'
-"Plugin 'ryanoasis/vim-devicons'
 Plugin 'scrooloose/nerdtree'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-airline/vim-airline'
 Plugin 'tyru/caw.vim.git'
 
 
@@ -76,7 +73,7 @@ syntax on
 " 文字、カーソル設定
 set list
 " 不可視文字を可視化(タブが「▸-」と表示される)
-set listchars=tab:▸\ 
+set listchars=tab:▸\ ,trail:_
 "set listchars=tab:▸\ ,eol:↲,extends:❯,precedes:❮
 " Tab文字を半角スペースにする
 set expandtab
@@ -134,6 +131,9 @@ set scrolloff=5
 
 " カラースキーマの適用
 colorscheme molokai
+set t_Co=256
+highlight Normal ctermfg=grey ctermbg=256
+highlight Visual ctermfg=240 ctermbg=whitejj
 
 " mapping config
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
@@ -149,3 +149,10 @@ set ambiwidth=double
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
+
+" For python
+filetype on
+autocmd FileType python setl autoindent textwidth=99
+autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+autocmd FileType python setl expandtab tabstop=8 shiftwidth=4 softtabstop=4
+
